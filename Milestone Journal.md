@@ -1,5 +1,5 @@
 # Milestone Journal
-- **May 10, 2026:** Modified the powershel script - removed the Excel module portion as it was not needed.
+- **May 10, 2026:** Modified the powershell script - removed the Excel module portion as it was not needed.
 
 - **April 22, 2026:** Created a powershell [script](https://github.com/builtbyke/ke-cloud-journey/blob/main/scripts/powershell/Sync-IntuneManagedDevices.ps1) that uses Microsoft Graph API and the Excel module to export managed devices from Intune and perform a sync on all the devices
 
