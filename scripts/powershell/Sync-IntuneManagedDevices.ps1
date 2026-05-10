@@ -1,34 +1,40 @@
 <#
 .SYNOPSIS
-    Exports managed Intune devices to a CSV and performs a sync on each device
-
+    Syncs all Windows Intune managed devices directly from Microsoft Graph.
+    
 .NOTES
-The below modules need to be installed in order to run this script:
+    The below modules need to be installed in order to run this script:
 
-1. Install-Module -Name Microsoft.Graph
-2. Install-Module -Name ImportExcel
+    Install-Module -Name Microsoft.Graph
 
-Make sure you are connected to Microsoft Graph, if not, use this command and authenticate:
-
-** Connect-MgGraph -Scopes "DeviceManagementManagedDevices.PrivilegedOperations.All" **
 #>
 
-Get-MgDeviceManagementManagedDevice | Export-Csv -Path 'path'
+Connect-MgGraph -Scopes "DeviceManagementManagedDevices.PrivilegedOperations.All"
 
-$pathToCsv = 'path'
-$file = Import-Csv -Path $pathToCsv | Select 'Id'
+# 1. Define Filter (Only get Windows devices that are currently 'managed')
+$filter = "operatingSystem eq 'Windows'"
 
-foreach ($row in $file) {
+Write-Host "Fetching Windows devices from Intune..." -ForegroundColor Cyan
+$devices = Get-MgDeviceManagementManagedDevice -Filter $filter -Property "Id", "DeviceName"
 
-    Write-Host "Attempting sync on device with ID: $($row.Id)" -ForegroundColor Green
-    Sync-MgDeviceManagementManagedDevice -ManagedDeviceId $row.Id
-
-try {
-    Sync-MgDeviceManagementManagedDevice -ManagedDeviceId $row.Id -ErrorAction Stop
-    Write-Host "This device was successfully synced" -ForegroundColor Green
-
-} 
-catch {
-    Write-Host "Could not sync device $($row.Id), please try again" -ForegroundColor Yellow
+if ($null -eq $devices) {
+    Write-Host "No devices found matching the criteria." -ForegroundColor Red
+    return
 }
+
+Write-Host "Found $($devices.Count) devices. Starting bulk sync..." -ForegroundColor Cyan
+
+foreach ($device in $devices) {
+    $params = @{
+        ManagedDeviceId = $device.Id
+    }
+
+    try {
+        # Perform the sync
+        Sync-MgDeviceManagementManagedDevice @params -ErrorAction Stop
+        Write-Host "SUCCESS: Sync initiated for $($device.DeviceName) ($($device.Id))" -ForegroundColor Green
+    } 
+    catch {
+        Write-Host "FAILURE: Could not sync $($device.DeviceName). Error: $($_.Exception.Message)" -ForegroundColor Yellow
+    }
 }
