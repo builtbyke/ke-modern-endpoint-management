@@ -1,4 +1,6 @@
 # Milestone Journal
+- **May 15, 2026:** Engineered and deployed a [proactive monitoring](https://github.com/builtbyke/ke-modern-endpoint-management/blob/main/scripts/powershell/Detect-Wallpaper.ps1) and [automated remediation](https://github.com/builtbyke/ke-modern-endpoint-management/blob/main/scripts/powershell/Remediate-Wallpaper.ps1) script to enforce corporate branding; successfully detects unauthorized desktop modifications and automatically restores the standardized baseline configuration.
+  
 - **May 11, 2026:** Deployed the Company Portal application to all endpoints 
   
 - **May 10, 2026:** Modified the powershell script - removed the Excel module portion as it was not needed.
