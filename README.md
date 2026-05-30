@@ -7,10 +7,6 @@ This repository tracks my transition into advanced Cloud Systems Administration.
 - Macbook M1 Pro (Personal Device)
 - Lenovo T460 running Win 11 Pro
 - Mini PC (ACEMAGICIAN, w/64gb RAM, 2TB SDD, Ryzen 7 5700U running ESXi 8.0.3)
-  
-**Want to add in the future:**
-- Andrioid Device
-- Linux Device
 
 ## 🛠 Intune Lab Focus
 My current focus is mastering **Modern Endpoint Management** with a focus on:
@@ -23,7 +19,6 @@ My current focus is mastering **Modern Endpoint Management** with a focus on:
 ## 📂 Repository Structure
 - **/projects/intune**: Documentation and blueprints for tenant configurations.
 - **/scripts/powershell**: Detection, Remediation, and Utility scripts for Windows.
-- **/scripts/bash**: Automation scripts for Linux/Unix environments.
 - **/configs/hardening**: Security baseline exports and JSON configurations.
 
 ## 🛡️ Hardening & Provisioning Specs
