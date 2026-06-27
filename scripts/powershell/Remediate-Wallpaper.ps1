@@ -1,16 +1,17 @@
 <#
 .SYNOPSIS
-    Sets the branded wallpaper as desktop background if not detected on the device
+    Sets the branded wallpaper as desktop background if not detected on the device/registry
 #>
 
 $registryPath = "HKCU:\Control Panel\Desktop"
 $destinationFolder = "C:\Users\Public\Documents\Branded Wallpapers"
 $wallpaperPath = "$destinationFolder\oshh-desktop-wallpaper-1920x1080.png"
-$imageUrl = "https://oshh-branded-images.s3.us-east-1.amazonaws.com/oshh-desktop-wallpaper-1920x1080.png" # Direct AWS S3 link
+$imageUrl = "https://oshh-branded-images.s3.us-east-1.amazonaws.com/oshh-desktop-wallpaper-1920x1080.png" # Direct link
+$value = (Get-ItemProperty -Path $registryPath -Name WallPaper -ErrorAction SilentlyContinue).WallPaper
 
-# 1. Check if the file exists
-if (Test-Path -Path $wallpaperPath) {
-    Write-Output "Wallpaper was found. No action needed."
+# 1. Check if the correct registry value exists
+if ($value -eq $wallpaperPath) {
+    Write-Output "Wallpaper is correct"
 }
 else {
     Write-Output "Wallpaper missing. Starting remediation..."
