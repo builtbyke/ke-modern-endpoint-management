@@ -5,8 +5,8 @@
 
 $registryPath = "HKCU:\Control Panel\Desktop"
 $destinationFolder = "C:\Users\Public\Documents\Branded Wallpapers"
-$wallpaperPath = "$destinationFolder\new_wallpaper.jpg"
-$imageUrl = "https://images.pexels.com/photos/3848158/pexels-photo-3848158.jpeg" # Direct link
+$wallpaperPath = "$destinationFolder\oshh-desktop-wallpaper-1920x1080.png"
+$imageUrl = "https://oshh-branded-images.s3.us-east-1.amazonaws.com/oshh-desktop-wallpaper-1920x1080.png" # Direct AWS S3 link
 
 # 1. Check if the file exists
 if (Test-Path -Path $wallpaperPath) {
@@ -31,8 +31,7 @@ else {
     # 4. Update the Registry
     Set-ItemProperty -Path $registryPath -Name "WallPaper" -Value $wallpaperPath
 
-    # 5. Refresh the desktop (The "Poke")
-    # Note: Running this once is usually enough; the loop is a bit heavy but ensures it hits.
+    # 5. Refreshes the desktop
     & RUNDLL32.EXE USER32.DLL,UpdatePerUserSystemParameters ,1 ,True
     
     Write-Output "Wallpaper was changed and system notified."
