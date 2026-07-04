@@ -1,7 +1,7 @@
 # KE Modern Endpoint Management ☁️
 
 ## Purpose
-This repository tracks my transition into advanced Cloud Systems Administration. It servers as a [techncial ledger](https://github.com/builtbyke/ke-cloud-journey/blob/main/Milestone%20Journal.md) for my Intune lab, automation scripts, and cloud infrastructure projects.
+This repository tracks my transition into advanced Cloud Systems Administration. It serves as a [technical ledger](https://github.com/builtbyke/ke-modern-endpoint-management/blob/main/Milestone%20Journal.md) for my Intune lab, automation scripts, and cloud infrastructure projects.
 
 ## Current Lab Hardware (as of 3/7/2026)
 - Macbook M1 Pro (Personal Device)
