@@ -1,7 +1,10 @@
 # KE Modern Endpoint Management ☁️
 
+> **Status:** Active learning lab. 9 months of professional Intune experience, 4 months into building this personal tenant to go deeper on the "why" behind what I do at work.
+
 ## Purpose
 This repository tracks my transition into advanced Cloud Systems Administration. It serves as a [technical ledger](https://github.com/builtbyke/ke-modern-endpoint-management/blob/main/Milestone%20Journal.md) for my Intune lab, automation scripts, and cloud infrastructure projects.
+
 
 ## Current Lab Hardware (as of 3/7/2026)
 - Macbook M1 Pro (Personal Device)
